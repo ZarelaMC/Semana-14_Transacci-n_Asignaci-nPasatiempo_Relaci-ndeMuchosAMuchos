@@ -91,7 +91,7 @@ $("#id_btn_agregar").click(function(){
 	$.ajax({
         type: "POST",
         url: "registraPasatiempo", 
-        data: $('#id_form').serialize(),
+        data: $('#id_form').serialize(), //------------> ENVÌA como variable "data" toda la informaciòn recogida en el formulario del .jsp
         success: function(data){
       	  agregarGrilla(data.lista, data.usuario);
       	  mostrarMensaje(data.mensaje);
@@ -101,7 +101,6 @@ $("#id_btn_agregar").click(function(){
         }
       });
 });
-
 
 
 function agregarGrilla(lista, var_usuario){
@@ -129,7 +128,7 @@ function accionEliminar(idUsuario, idPasatiempo){
 	$.ajax({
         type: "POST",
         url: "eliminaPasatiempo", 
-        data: {"idUsuario": idUsuario, "idPasatiempo": idPasatiempo},
+        data: {"idUsuario": idUsuario, "idPasatiempo": idPasatiempo}, //ENVÌA idUsuario e idPasatiempo para que el controller los coja como paràmetros
         success: function(data){
       	  agregarGrilla(data.lista, data.usuario);
       	  mostrarMensaje(data.mensaje);
